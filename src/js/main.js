@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         ContainerJS.Loaders.COMMON_JS
     );
 
-    ContainerJS.utils.Defferd.when([
+    ContainerJS.utils.Deferred.when([
         container.get('todoList'),
         container.get('actions')
     ]).then(
@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
                         actions={components[1]}/>,
                     document.body
                 );
+            } catch (e) {
+                console.log(e);
             }
         },
         (error) => console.log(error)

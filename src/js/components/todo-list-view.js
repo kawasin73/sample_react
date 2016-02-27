@@ -16,12 +16,12 @@ export default React.createClass({
 
     componentDidMount() {
         Object.observe(this.props.todoList, this.onChange, ['update']);
-        Array.observe(this.proops.todoList.items, this.onChange);
+        Array.observe(this.props.todoList.items, this.onChange);
     },
 
     componentWillUnmount() {
         Object.unobserve(this.props.todoList, this.onChange, ['update']);
-        Array.unobserve(this.proops.todoList.items, this.onChange);
+        Array.unobserve(this.props.todoList.items, this.onChange);
     },
 
     render() {
@@ -30,7 +30,7 @@ export default React.createClass({
 
         this.state.todos.forEach((item) => {
             if (item.completed) enableToRemoveCompleted = true;
-            todos.push(<TodoView todo{item} actions={this.props.actions}/>);
+            todos.push(<TodoView todo={item} actions={this.props.actions}/>);
         });
 
         return (
@@ -56,8 +56,8 @@ export default React.createClass({
             Object.observe(todo, this.onTodoChange, ['update']);
         });
 
-        Array.unobserve(this.proops.todoList.items, this.onChange);
-        Array.observe(this.proops.todoList.items, this.onChange);
+        Array.unobserve(this.props.todoList.items, this.onChange);
+        Array.observe(this.props.todoList.items, this.onChange);
 
         this.setState(this.retrieveState());
     },
